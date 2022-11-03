@@ -1,5 +1,4 @@
 <script>
-
 export default {
   el: '#vuebuttons',
   data() {
@@ -40,13 +39,11 @@ export default {
     });
   },
   methods: {
-
     getRandomInt: function(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
       return Math.floor(Math.random() * (max - min + 1)) + min;
     },
-
     setRangeFunctionk: function(){
         this.a = document.getElementById("cards").value;
         console.log(this.a);
@@ -81,9 +78,7 @@ export default {
           obrazek4.style.display = "block";
         }
     },
-
     rangeFunctionk: function(){
-
         window.addEventListener('keydown', (e) => {
           if (e.key == 'p') {
             clearInterval(this.myInterval);
@@ -165,34 +160,31 @@ export default {
                 this.currentSrc2 = karta2;
                 this.currentSrc3 = karta3;
                 this.currentSrc4 = karta4;
-
             }
         }
     },
     changeSpaceBetween: function() {
       if(this.waskie == 0){
-        document.getElementById('displayCard1').style.paddingLeft = "182px";
-        document.getElementById('displayCard2').style.paddingLeft = "206px";
-        document.getElementById('displayCard3').style.paddingLeft = "230px";
-        document.getElementById('displayCard4').style.paddingLeft = "254px";
+        document.getElementById('displayCardd1').style.paddingLeft = "0px";
+        document.getElementById('displayCardd2').style.paddingLeft = "24px";
+        document.getElementById('displayCardd3').style.paddingLeft = "48px";
+        document.getElementById('displayCardd4').style.paddingLeft = "72px";
         this.waskie = 1;
         this.napis = "WĄSKO"
       }
       else{
-        document.getElementById('displayCard1').style.paddingLeft = "161px";
-        document.getElementById('displayCard2').style.paddingLeft = "199px";
-        document.getElementById('displayCard3').style.paddingLeft = "237px";
-        document.getElementById('displayCard4').style.paddingLeft = "275px";
+        document.getElementById('displayCardd1').style.paddingRight = "0px";
+        document.getElementById('displayCardd2').style.paddingLeft = "38px";
+        document.getElementById('displayCardd3').style.paddingLeft = "76px";
+        document.getElementById('displayCardd4').style.paddingLeft = "114px";
         this.waskie = 0;
         this.napis = "SZEROKO"
       }
     },
-
     getRandomItem: function(set) {
       let items = Array.from(set);
       return items[Math.floor(Math.random() * items.length)];
     },
-
     rangeFunctionl2l: function() {	
       if(this.numbers.size != 0){
         var r = this.getRandomItem(this.numbers);
@@ -209,13 +201,11 @@ export default {
         }
       }
     },
-
     autoPlay: function() {
       var v = document.getElementById("interwał").value;
       console.log(v);	
       this.myInterval = setInterval(this.rangeFunctionk, v);
     },
-
     buttons(){
       const buttonopen = document.querySelector(".button-open")
       buttonopen.style.display = "block"
@@ -223,13 +213,10 @@ export default {
       const buttonhide = document.querySelector(".button-hide")
       buttonhide.style.display = "none"
     },
-
     closeNav: function(){
-
       const sidebar =  document.querySelector(".sidebar-cards")
       sidebar.style.width = "0px"
       sidebar.style.height = "550px"
-
       this.isclicked1 = false;
       this.isclicked2 = false;
       this.isclicked3 = false;
@@ -238,58 +225,44 @@ export default {
       this.isclicked6 = false;
       this.isclicked7 = false;
       this.isclicked8 = false;
-
       const arrowleft = document.querySelector(".arrow-left")
       arrowleft.style.rotate = "180deg"
-
       const arrowright = document.querySelector(".arrow-right")
       arrowright.style.rotate = "0deg"
-
       const arrow = document.querySelector(".arrow-left")
       arrow.style.left = "55%"
-
       setTimeout(() => {console.log(this.buttons())}, 1000)
-
       const sidebarnav = document.querySelectorAll(".sidebar-cards-nav")
       for (let i = 0; i < sidebarnav.length; i++) {
         sidebarnav[i].style.display = "none";
       }
     },
-
     changeImage: function(){
         var img = document.getElementById('image');
         img.src = '../assets/deck/3.png';
     },
-
     openNav: function(){
       const sidebar = document.querySelector(".sidebar-cards")
       sidebar.style.width = "300px"
       sidebar.style.height = "550px"
-
       this.isclicked1 = true;
       this.isclicked2 = true;
       this.isclicked3 = true;
       this.isclicked4 = true;
-
       const arrowright = document.querySelector(".arrow-right")
       arrowright.style.rotate = "180deg"
-
       const arrow = document.querySelector(".arrow-left")
       arrow.style.left = "92%"
       arrow.style.rotate = "0deg"
-
       const buttonopen = document.querySelector(".button-open")
       buttonopen.style.display = "none"
-
       const buttonhide = document.querySelector(".button-hide")
       buttonhide.style.display = "block"     
-
       const sidebarnav = document.querySelectorAll(".sidebar-cards-nav")
       for (let i = 0; i < sidebarnav.length; i++) {
         sidebarnav[i].style.display = "block";
       }
     },
-
     showOptions1: function(){
         this.isclicked2 = !this.isclicked2
         this.isclicked3 = !this.isclicked3
@@ -303,7 +276,6 @@ export default {
         this.isclicked6 = !this.isclicked6
     },
     showOptions3: function(){
-
         this.isclicked1 = !this.isclicked1
         this.isclicked2 = !this.isclicked2
         this.isclicked4 = !this.isclicked4
@@ -363,25 +335,25 @@ export default {
       <v-col cols="12" class="pa-0 ma-0">
             <div class="site">
               <div id="displaycard">
-                <div id="displayCard1"><v-img
+                <div id="displayCardd1"><v-img
                     :src='imagesArray[currentSrc1]'
                     aspect-ratio="1"
                     class="card1"
                     id="obrazek1"
                   /></div>
-                  <div id="displayCard2"><v-img
+                  <div id="displayCardd2"><v-img
                       :src='imagesArray[currentSrc2]'
                       aspect-ratio="1"
                       class="card2"
                       id="obrazek2"
                     /></div>
-                    <div id="displayCard3"><v-img
+                    <div id="displayCardd3"><v-img
                       :src='imagesArray[currentSrc3]'
                       aspect-ratio="1"
                       class="card3"
                       id="obrazek3"
                     /></div>
-                    <div id="displayCard4"><v-img
+                    <div id="displayCardd4"><v-img
                         :src='imagesArray[currentSrc4]'
                         aspect-ratio="1"
                         class="card4"
@@ -395,11 +367,23 @@ export default {
 
 <style>
 #displaycard {
-  width: 610px;
+
   height: 205px;
   border-radius: 10px;
   line-height: 100px;
   display: flex;
+}
+@media screen and (max-width: 1300px){
+    #displaycard{   padding-left: 430px; }
+}
+@media screen and (max-width: 1200px){
+    #displaycard{   padding-left: 380px; }
+}
+@media screen and (max-width: 1100px){
+    #displaycard{   padding-left: 320px; }
+}
+@media screen and (max-width: 1000px){
+    #displaycard{   padding-left: 270px; }
 }
 .site{
   height: 100vh;
@@ -505,24 +489,26 @@ export default {
   border-radius: 45px;
   display: none;
 }
-#displayCard1 {
-  padding-left: 182px;
+#displayCardd1, #displayCardd2, #displayCardd3, #displayCardd4{
+    margin: 0;
+    padding-right: 0px;
+    position: absolute;
+    left: 38%;
+}
+#displayCardd1 {
+  padding-left: 0px;
 	z-index: 1;
-  position: absolute;
 }
-#displayCard2 {
-  padding-left: 206px;
+#displayCardd2 {
+  padding-left: 24px;
 	z-index: 2;
-  position: absolute;
 }
-#displayCard3 {
-  padding-left: 230px;
+#displayCardd3 {
+  padding-left: 48px;
 	z-index: 3;
-  position: absolute;
 }
-#displayCard4 {
-  padding-left: 254px;
+#displayCardd4 {
+  padding-left: 72px;
 	z-index: 4;
-  position: absolute;
 }
 </style>

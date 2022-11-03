@@ -1,9 +1,10 @@
 <template>
-  <v-container fluid class="pa-0 ma-0" style="background-color:#c2c2c2">
+  <v-container fluid class="pa-0 ma-0" style="background-color:#c2c2c2;height:100%">
       <v-row class="text-center pa-0 ma-0">
         <router-link to="/" class="pa-0 ma-0"><div class="arrowback"></div></router-link>
-        <v-col cols="3" class="pa-0 ma-0">
-          <MyNavbarBinary></MyNavbarBinary>  
+        <v-col cols="12" class="pa-0 ma-0">
+          <span v-if="mobileView"><MyNavbarBinaryMobile></MyNavbarBinaryMobile></span>  
+          <span v-else><MyNavbarBinary></MyNavbarBinary></span>
         </v-col>
         <v-col cols="12" class="pa-0 ma-0">
           <div class="site">
@@ -19,6 +20,7 @@ import { defineComponent } from 'vue';
 
 // Components
 import MyNavbarBinary from '../components/MyNavbarBinary.vue';
+import MyNavbarBinaryMobile from '../components/MyNavbarBinaryMobile.vue';
 
 export default defineComponent({
   name: 'BinaryVue',
@@ -27,10 +29,17 @@ export default defineComponent({
   },
   components: {
     MyNavbarBinary,
+    MyNavbarBinaryMobile,
   },
-
   methods: {
-  }
+    handleView() {
+        this.mobileView = window.innerWidth <= 600;
+    }
+  },
+  created() {
+    this.handleView();
+    window.addEventListener('resize', this.handleView);
+  },
 });
 
 </script>
@@ -65,5 +74,11 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+@media screen and (max-width: 600px){
+    .site{ height: 20vh; }
+}
+@media screen and (max-width: 600px){
+    .arrowback{ top:630px; }
 }
 </style>

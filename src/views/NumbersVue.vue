@@ -1,9 +1,10 @@
 <template>
-  <v-container fluid class="pa-0 ma-0" style="background-color:#c2c2c2">
+  <v-container fluid class="pa-0 ma-0" style="background-color:#c2c2c2;height:100%">
       <v-row class="text-center pa-0 ma-0">
         <router-link to="/" class="pa-0 ma-0"><div class="arrowback"></div></router-link>
-        <v-col cols="3" class="pa-0 ma-0">
-          <MyNavbarNumbers></MyNavbarNumbers>  
+        <v-col cols="12" class="pa-0 ma-0">
+          <span v-if="mobileView"><MyNavbarNumbersMobile></MyNavbarNumbersMobile></span>
+          <span v-else><MyNavbarNumbers></MyNavbarNumbers></span>
         </v-col>
         <v-col cols="12" class="pa-0 ma-0">
           <div class="site">
@@ -19,6 +20,7 @@ import { defineComponent } from 'vue';
 
 // Components
 import MyNavbarNumbers from '../components/MyNavbarNumbers.vue';
+import MyNavbarNumbersMobile from '../components/MyNavbarNumbersMobile.vue';
 
 export default defineComponent({
   name: 'NumbersVue',
@@ -27,10 +29,17 @@ export default defineComponent({
   },
   components: {
     MyNavbarNumbers,
+    MyNavbarNumbersMobile,
   },
-
   methods: {
-  }
+    handleView() {
+        this.mobileView = window.innerWidth <= 600;
+    }
+  },
+  created() {
+    this.handleView();
+    window.addEventListener('resize', this.handleView);
+  },
 });
 
 </script>
@@ -66,5 +75,11 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+@media screen and (max-width: 600px){
+    .site{ height: 20vh; }
+}
+@media screen and (max-width: 600px){
+    .arrowback{ top:630px; }
 }
 </style>
