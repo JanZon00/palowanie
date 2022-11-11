@@ -130,7 +130,7 @@ export default {
     closeNav: function(){
       const sidebar =  document.querySelector(".sidebar-numbers")
       sidebar.style.width = "0px"
-      sidebar.style.height = "550px"
+      sidebar.style.height = "535px"
 
       this.isclicked1 = false;
       this.isclicked2 = false;
@@ -139,16 +139,7 @@ export default {
       this.isclicked5 = false;
       this.isclicked6 = false;
 
-      const arrowleft = document.querySelector(".arrow-left")
-      arrowleft.style.rotate = "180deg"
-
-      const arrowright = document.querySelector(".arrow-right")
-      arrowright.style.rotate = "0deg"
-
-      const arrow = document.querySelector(".arrow-left")
-      arrow.style.left = "55%"
-
-      setTimeout(() => {console.log(this.buttons())}, 1000)
+      setTimeout(() => {console.log(this.buttons())}, 600)
 
       const sidebarnav = document.querySelectorAll(".sidebar-number-nav")
       for (let i = 0; i < sidebarnav.length; i++) {
@@ -159,19 +150,12 @@ export default {
     openNav: function(){
       const sidebar = document.querySelector(".sidebar-numbers")
       sidebar.style.width = "300px"
-      sidebar.style.height = "550px"
+      sidebar.style.height = "535px"
 
       this.isclicked1 = true;
       this.isclicked2 = true;
       this.isclicked3 = true;
       this.isclicked4 = true;
-
-      const arrowright = document.querySelector(".arrow-right")
-      arrowright.style.rotate = "180deg"
-
-      const arrow = document.querySelector(".arrow-left")
-      arrow.style.left = "92%"
-      arrow.style.rotate = "0deg"
 
       const buttonopen = document.querySelector(".button-open")
       buttonopen.style.display = "none"
@@ -242,8 +226,10 @@ export default {
 
 <style>
 .sidebar-numbers{
-  margin-top: 100px;
-  height: 550px;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  height: 535px;
   max-width: 300px;
   width: 300px;
   background-color: #366799;
@@ -279,32 +265,25 @@ export default {
 .sidebar-number-nav:hover{
   background-color: rgb(58, 58, 58);
 }
-.arrow-left {
+.arrow-left, .arrow-right {
   position: absolute;
   margin: 0 auto;
   width: 0; 
   height: 0; 
   border-top: 25px solid transparent;
   border-bottom: 25px solid transparent; 
-  border-right: 25px solid white;
   margin-left: auto;
   left: 92%;
-  top: 32vh;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
   transition-duration: 0.6s;
 }
 .arrow-right {
-  position: absolute;
-  margin: 0 auto;
-  width: 0; 
-  height: 0; 
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent; 
+  border-left: 25px solid white;
+}
+.arrow-left {
   border-right: 25px solid white;
-  margin-left: auto;
-  left: 92%;
-  top: 32vh;
-  transition-duration: 0.6s;
-  transform: rotate(180deg);
 }
 .btnnumber, .btnnumber2{
   width: 100%;

@@ -5,7 +5,8 @@
             <router-link to="karty" class="pa-0 ma-0">
               <div @mouseover="hovertrening = true"  @mouseleave="hovertrening = false">
               <span><div class="field1"><span class="dot1">
-              <span class="indot1"></span></span></div></span></div>
+                <span class="indot1"></span></span>
+              </div></span></div>
             </router-link>
           </v-col>
           <v-col lg="6" md="6" sm="6" cols="12" class="pa-0 ma-0">
@@ -69,7 +70,6 @@ export default({
   --bluebordernav: #29b0d9;
 }
 .field1, .field2, .field3, .field4{
-  line-height: 48vh;
   transition-duration: 0.4s;
   color: white;
   border-radius: 20px;
@@ -78,22 +78,19 @@ export default({
   border: 7px solid white;
   min-height: 49vh;
   max-height: 50%;
+  position: relative;
 }
 .field1{
   background-image: url("../views/assets/tlo1.png");
-  margin-left: 10px;
 }
 .field2{
   background-image: url("../views/assets/tlo2.png");
-  margin-right: 10px;
 }
 .field3{
   background-image: url("../views/assets/tlo3.png");
-  margin-left: 10px;
 }
 .field4{
   background-image: url("../views/assets/tlo4.png");
-  margin-right: 10px;
 }
 .field1:hover, .field2:hover, .field3:hover, .field4:hover {
   transform: scale(1.02);
@@ -159,20 +156,19 @@ a:link, a:visited, a:hover, a:active {
   background-color: #ececec;
 }
 .dot1, .dot2, .dot3, .dot4{
-  position: relative;
+  position: absolute;
   margin-left: auto;
   margin-right: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
   height: 205px;
   width: 205px;
   border-radius: 50%;
   display: block;
-  line-height: 20vh;
-  top: 50px;
   box-sizing: border-box;
   z-index: 9998;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .dot1{
   background-color: white;
@@ -202,9 +198,8 @@ a:link, a:visited, a:hover, a:active {
   border-radius: 50%;
   display: block;
   background-color: #ececec;
-  margin-top: 20px;
   position: relative;
-  top: 25px;
+  top: 27px;
 }
 .indot1{
   background-image: url("../views/assets/cards.png");
