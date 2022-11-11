@@ -44,14 +44,14 @@ export default defineComponent({
     background-image: url("../views/assets/arrowback.png");
     height: 60px;
     width: 60px;
-    top:30px;
-    left: 30px;
+    top:5px;
+    left: 20px;
 }
 .arrowback:hover{
   transform: scale(1.12);
   transition: 0.4s;
 }
 @media screen and (max-width: 900px){
-    .arrowback{ top:630px; }
+    .arrowback{ top:550px; }
 }
 </style>

@@ -29,7 +29,7 @@ export default defineComponent({
   },
   methods: {
     handleView() {
-        this.mobileView = window.innerWidth <= 600;
+        this.mobileView = window.innerWidth <= 800;
     }
   },
   created() {
@@ -51,8 +51,8 @@ export default defineComponent({
     background-image: url("../views/assets/arrowback.png");
     height: 60px;
     width: 60px;
-    top:30px;
-    left: 30px;
+    top:5px;
+    left: 20px;
 }
 .arrowback:hover{
   transform: scale(1.12);
@@ -72,10 +72,10 @@ export default defineComponent({
   align-items: center;
   text-align: center;
 }
-@media screen and (max-width: 600px){
+@media screen and (max-width: 800px){
     .site{ height: 20vh; }
 }
-@media screen and (max-width: 600px){
-    .arrowback{ top:630px;}
+@media screen and (max-width: 800px){
+    .arrowback{ top:550px; }
 }
 </style>
