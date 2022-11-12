@@ -104,17 +104,6 @@ a:link, a:visited, a:hover, a:active {
   line-height: 190px;
   font-weight: 600;
 }
-.mozg {
-  position: absolute;
-  max-width: 250px;
-  max-height: 250px;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  text-align: center;
-  top: 32%;
-}
 @media screen and (max-width: 600px) {
   .field1, .field3{
     margin-left: 0px;
@@ -132,8 +121,7 @@ a:link, a:visited, a:hover, a:active {
 }
 .dotcenter, .dotinnercenter{
   position: absolute;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
   left: 0;
   right: 0;
   text-align: center;
@@ -142,9 +130,12 @@ a:link, a:visited, a:hover, a:active {
   line-height: 20vh;
   z-index: 9999;
   transition: 1s;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .dotcenter{
-  top: 20px;
   background-color: white;
   height: 205px;
   width: 205px;
@@ -152,7 +143,6 @@ a:link, a:visited, a:hover, a:active {
 .dotinnercenter{
   height: 190px;
   width: 190px;
-  top: 8px;
   background-color: #ececec;
 }
 .dot1, .dot2, .dot3, .dot4{
