@@ -51,8 +51,8 @@ export default defineComponent({
     background-image: url("../views/assets/arrowback.png");
     height: 60px;
     width: 60px;
-    top:5px;
-    left: 20px;
+    top:8px;
+    left: 2px;
 }
 .arrowback:hover{
   transform: scale(1.12);
