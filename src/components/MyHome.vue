@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="pa-0 ma-0">
+  <v-container fluid class="padcon">
         <v-row class="pa-0 ma-0">
           <v-col lg="6" md="6" sm="6" cols="12" class="pa-0 ma-0">
             <router-link to="karty" class="pa-0 ma-0">
@@ -69,6 +69,18 @@ export default({
   --bluenav: #44c7ef;
   --bluebordernav: #29b0d9;
 }
+.padcon{
+  margin-top: 0px;
+  padding-top: 8px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+}
+@media screen and (max-width: 600px) {
+  .padcon{
+    padding-top: 0px;
+  }
+}
 .field1, .field2, .field3, .field4{
   transition-duration: 0.4s;
   color: white;
@@ -127,7 +139,6 @@ a:link, a:visited, a:hover, a:active {
   text-align: center;
   border-radius: 50%;
   display: block;
-  line-height: 20vh;
   z-index: 9999;
   transition: 1s;
   top: 50%;
