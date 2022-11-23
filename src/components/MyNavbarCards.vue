@@ -3,48 +3,21 @@ export default {
   el: '#vuebuttons',
   data() {
     return {
-      isLoading : true,
-      isclicked1 : true,
-      isclicked2 : true,
-      isclicked3 : true,
-      isclicked4 : true,
-      isclicked5 : false, 
-      isclicked6 : false,
-      isclicked7 : false,
-      isclicked8 : false,
-      myInterval : null,
-      opcjaEweliny : false,
-      waskie : 1,
-      rangeArray : [0, 0],
-      currentSrc1: 0, currentSrc2: 0, currentSrc3: 0, currentSrc4: 0,
-      imagesArray : [require("../assets/deck/1.png"), require("../assets/deck/2.png"), require("../assets/deck/3.png"), require("../assets/deck/4.png"), require("../assets/deck/5.png"), require("../assets/deck/6.png"), require("../assets/deck/7.png"), require("../assets/deck/8.png"), require("../assets/deck/9.png"), require("../assets/deck/10.png"), require("../assets/deck/11.png"), require("../assets/deck/12.png"), require("../assets/deck/13.png"), require("../assets/deck/14.png"), require("../assets/deck/15.png"), require("../assets/deck/16.png"), require("../assets/deck/17.png"), require("../assets/deck/18.png"), require("../assets/deck/19.png"), require("../assets/deck/20.png"), require("../assets/deck/21.png"), require("../assets/deck/22.png"), require("../assets/deck/23.png"), require("../assets/deck/24.png"), require("../assets/deck/25.png"), require("../assets/deck/26.png"), require("../assets/deck/27.png"), require("../assets/deck/28.png"), require("../assets/deck/29.png"), require("../assets/deck/30.png"), require("../assets/deck/31.png"), require("../assets/deck/32.png"), require("../assets/deck/33.png"), require("../assets/deck/34.png"), require("../assets/deck/35.png"), require("../assets/deck/36.png"), require("../assets/deck/37.png"), require("../assets/deck/38.png"), require("../assets/deck/39.png"), require("../assets/deck/40.png"), require("../assets/deck/41.png"), require("../assets/deck/42.png"), require("../assets/deck/43.png"), require("../assets/deck/44.png"), require("../assets/deck/45.png"), require("../assets/deck/46.png"), require("../assets/deck/47.png"), require("../assets/deck/48.png"), require("../assets/deck/49.png"), require("../assets/deck/50.png"), require("../assets/deck/51.png"), require("../assets/deck/52.png")],
-      shuffledArray: null,
-      num : 0,
-      x : 0,
-      numbers : new Set(),
       a : 0,
-      napis : "WĄSKO"
     }
   },
+  mixins: [
+    require('../MyMixins/palowanieMixin.vue')
+  ],
   created() {
     window.addEventListener('keydown', (e) => {
       if (e.key == 'ArrowRight') {
-        this.rangeFunctionk()
-      }
-    });
-    window.addEventListener('keydown', (e) => {
-      if (e.key == 'ArrowUp') {
-        this.rangeFunction2k()
+        this.rangeFunction()
       }
     });
   },
   methods: {
-    getRandomInt: function(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    },
-    setRangeFunctionk: function(){
+    setRangeFunction: function(){
         this.a = document.getElementById("cards").value;
         console.log(this.a);
         if(this.a == 2){
@@ -78,7 +51,7 @@ export default {
           obrazek4.style.display = "block";
         }
     },
-    rangeFunctionk: function(){
+    rangeFunction: function(){
         window.addEventListener('keydown', (e) => {
           if (e.key == 'p') {
             clearInterval(this.myInterval);
@@ -181,11 +154,7 @@ export default {
         this.napis = "SZEROKO"
       }
     },
-    getRandomItem: function(set) {
-      let items = Array.from(set);
-      return items[Math.floor(Math.random() * items.length)];
-    },
-    rangeFunctionl2l: function() {	
+    rangeFunction2: function() {	
       if(this.numbers.size != 0){
         var r = this.getRandomItem(this.numbers);
         if(r < 100 && r >= 10){
@@ -200,18 +169,6 @@ export default {
           document.getElementById("displayNumberl").innerHTML = r;
         }
       }
-    },
-    autoPlay: function() {
-      var v = document.getElementById("interwał").value;
-      console.log(v);	
-      this.myInterval = setInterval(this.rangeFunctionk, v);
-    },
-    buttons(){
-      const buttonopen = document.querySelector(".button-open")
-      buttonopen.style.display = "block"
-      
-      const buttonhide = document.querySelector(".button-hide")
-      buttonhide.style.display = "none"
     },
     closeNav: function(){
       const sidebar =  document.querySelector(".sidebar-cards")
@@ -256,49 +213,6 @@ export default {
         sidebarnav[i].style.display = "block";
       }
     },
-    showOptions1: function(){
-        this.isclicked2 = !this.isclicked2
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked5 = !this.isclicked5
-    },
-    showOptions2: function(){
-        this.isclicked1 = !this.isclicked1
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked6 = !this.isclicked6
-    },
-    showOptions3: function(){
-        this.isclicked1 = !this.isclicked1
-        this.isclicked2 = !this.isclicked2
-        this.isclicked4 = !this.isclicked4
-        this.isclicked7 = !this.isclicked7
-    },
-    showOptions4: function(){
-        this.isclicked1 = !this.isclicked1
-        this.isclicked2 = !this.isclicked2
-        this.isclicked3 = !this.isclicked3
-        this.isclicked8 = !this.isclicked8
-    },
-    showOptions5: function(){
-        this.isclicked2 = !this.isclicked2
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked5 = !this.isclicked5
-    },
-    showOptions6: function(){
-        this.isclicked1 = !this.isclicked1
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked6 = !this.isclicked6
-    },
-    showOptions9: function(){
-        this.opcjaEweliny = !this.opcjaEweliny
-        this.isclicked1 = !this.isclicked1
-        this.isclicked2 = !this.isclicked2
-        this.isclicked3 = !this.isclicked3
-        this.isclicked8 = false
-    },
   }
 }
 </script>
@@ -311,9 +225,9 @@ export default {
             <span v-if="isclicked1"><button @click="showOptions1" class="btncards" id="btn1">Wybierz ilość kart</button></span>
             <span v-if="isclicked2"><button @click="showOptions2" class="btncards" id="btn2">Auto-wyświetlanie</button></span>
             <span v-if="isclicked3"><button @click="showOptions3" class="btncards" id="btn3">Sposób wyświetlania</button></span>
-            <span v-if="isclicked4"><button @click="showOptions4" class="btncards" id="btn4">Dodatkowe opcje</button></span>
+            <span v-if="isclicked4"><button @click="showOptions4a" class="btncards" id="btn4">Dodatkowe opcje</button></span>
             <span v-if="isclicked5"><input type="text" id="cards" name="cards" class="btncards2" placeholder="Ilość wyświetlanych kart (2, 3 lub 4)"></span>
-            <span v-if="isclicked5"><button @click="showOptions5(); rangeFunctionk(); setRangeFunctionk();" class="btncards" type="submit" id="submitButton">Potwierdź</button></span>
+            <span v-if="isclicked5"><button @click="showOptions5(); rangeFunction(); setRangeFunction();" class="btncards" type="submit" id="submitButton">Potwierdź</button></span>
             <span v-if="isclicked6"><input type="text2" id="interwał" class="btncards2" name="interwał" placeholder="Interwał (np: 1000 -> 1 sekunda)"></span>
             <span v-if="isclicked6"><button @click="autoPlay();showOptions6();" class="btncards" type="submit" id="submitButton2">Potwierdź</button></span>
             <span v-if="isclicked7"><button @click="changeSpaceBetween()" class="btncards" type="confirm" id="submitButton2">{{napis}}</button></span>
@@ -359,144 +273,6 @@ export default {
 </template>
 
 <style>
-#displaycard {
-
-  height: 205px;
-  border-radius: 10px;
-  line-height: 100px;
-  display: flex;
-}
-@media screen and (max-width: 1300px){
-    #displaycard{   padding-left: 430px; }
-}
-@media screen and (max-width: 1200px){
-    #displaycard{   padding-left: 380px; }
-}
-@media screen and (max-width: 1100px){
-    #displaycard{   padding-left: 320px; }
-}
-@media screen and (max-width: 1000px){
-    #displaycard{   padding-left: 270px; }
-}
-.site{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-.sidebar-cards{
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  height: 535px;
-  max-width: 300px;
-  width: 300px;
-  background-color: #DE1400;
-  justify-content: center;
-  text-align: center;
-  position: fixed;
-  transition-duration: 0.8s;
-  border-radius: 10px;
-}
-.sidebar-cards-nav{
-  margin-top: 5px;  
-  height: 100px;
-  max-width: 280px;
-  color: white;
-  line-height: 100px;
-  display: block;
-}
-#btn1, #btn2, #btn3, #btn4{
-    display: block;
-}
-.btncards:hover{
-  background-color: #BE1100;
-}
-.button-open{
-  max-width: 280px;
-  color: white;
-  line-height: 20px;
-  display: none;
-}
-.button-hide{
-  max-width: 280px;
-  color: white;
-  line-height: 20px;
-  display: block;
-}
-.sidebar-nav:hover{
-  background-color: #BE1100;
-}
-.arrow-left, .arrow-right {
-  position: absolute;
-  margin: 0 auto;
-  width: 0; 
-  height: 0; 
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent; 
-  margin-left: auto;
-  left: 92%;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  transition-duration: 0.6s;
-}
-.arrow-right {
-  border-left: 25px solid white;
-}
-.arrow-left {
-  border-right: 25px solid white;
-}
-.btncards, .btncards2{
-  width: 100%;
-  border-radius: 10px;
-  height: 90px;
-  margin-top: 30px;
-  background-color: #c2c2c2;
-  text-align: center;
-  display: block;
-}
-#obrazek1{
-  width: 205px;
-  border-radius: 45px;
-  display: none;
-}
-#obrazek2{
-  width: 205px;
-  border-radius: 45px;
-  display: none;
-}
-#obrazek3{
-  width: 205px;
-  border-radius: 45px;
-  display: none;
-}
-#obrazek4{
-  width: 205px;
-  border-radius: 45px;
-  display: none;
-}
-#displayCardd1, #displayCardd2, #displayCardd3, #displayCardd4{
-    margin: 0;
-    padding-right: 0px;
-    position: absolute;
-    left: 38%;
-}
-#displayCardd1 {
-  padding-left: 0px;
-	z-index: 1;
-}
-#displayCardd2 {
-  padding-left: 24px;
-	z-index: 2;
-}
-#displayCardd3 {
-  padding-left: 48px;
-	z-index: 3;
-}
-#displayCardd4 {
-  padding-left: 72px;
-	z-index: 4;
-}
+@import '../css/cardsnav.css';
+@import '../css/nav.css';
 </style>

@@ -1,28 +1,14 @@
 <script>
-
 export default {
   el: '#vuebuttons',
   data() {
     return {
-      notyet : false,
-      isLoading : true,
-      isclicked1 : true,
-      isclicked2 : true,
-      isclicked3 : true,
-      isclicked4 : true,
-      isclicked5 : false,
-      isclicked6 : false,
-      isclicked7 : false, 
-      myInterval : null,
-      rangeArray : [0, 0],
-      num : 0,
-      x : 0,
-      numbers : new Set(),
-      a : 1,
-      b : 1,
-      przerwa : false,
+      a : 1, b : 1,
     }
   },
+  mixins: [
+    require('../MyMixins/palowanieMixin.vue')
+  ],
   created() {
     window.addEventListener('keydown', (e) => {
       if (e.key == 'ArrowRight') {
@@ -36,12 +22,6 @@ export default {
     });
   },
   methods: {
-    getRandomInt: function(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    },
-
     setRangeFunction: function(){
         this.a = document.getElementById("lrange").value;
         console.log(this.a);
@@ -74,7 +54,6 @@ export default {
     rangeFunction: function(){
         var c = this.generateBinary(this.a * this.b);
         this.x = c;
-        //document.getElementById("displayBinary").innerHTML = this.x;
 
         window.addEventListener('keydown', (e) => {
           if (e.key == 'r') {
@@ -114,11 +93,6 @@ export default {
             document.getElementById("displayBinary").innerHTML = result;    
         }
     },
-
-    getRandomItem: function(set) {
-      let items = Array.from(set);
-      return items[Math.floor(Math.random() * items.length)];
-    },
     
     generateBinary: function(length) {
         const characters ='10';
@@ -146,20 +120,6 @@ export default {
           document.getElementById("displayBinary").innerHTML = r;
         }
       }
-    },
-
-    autoPlay: function() {
-      var v = document.getElementById("interwał").value;
-      console.log(v);	
-      this.myInterval = setInterval(this.rangeFunction, v);
-    },
-
-    buttons(){
-      const buttonopen = document.querySelector(".button-open")
-      buttonopen.style.display = "block"
-      
-      const buttonhide = document.querySelector(".button-hide")
-      buttonhide.style.display = "none"
     },
 
     closeNav: function(){
@@ -204,43 +164,6 @@ export default {
         sidebarnav[i].style.display = "block";
       }
     },
-
-    showOptions1: function(){
-        this.isclicked2 = !this.isclicked2
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked5 = !this.isclicked5
-    },
-    showOptions2: function(){
-        this.isclicked1 = !this.isclicked1
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked6 = !this.isclicked6
-    },
-    showOptions4: function(){
-        this.isclicked3 = !this.isclicked3
-        this.isclicked1 = !this.isclicked1
-        this.isclicked2 = !this.isclicked2
-        this.isclicked7 = !this.isclicked7
-    },
-    showOptions5: function(){
-        this.isclicked2 = !this.isclicked2
-        this.isclicked4 = !this.isclicked4
-        this.isclicked5 = !this.isclicked5
-        this.isclicked3 = !this.isclicked3
-    },
-    showOptions6: function(){
-        this.isclicked1 = !this.isclicked1
-        this.isclicked4 = !this.isclicked4
-        this.isclicked6 = !this.isclicked6
-        this.isclicked3 = !this.isclicked3
-    },
-    showOptions7: function(){
-        this.isclicked3 = !this.isclicked3
-        this.isclicked1 = !this.isclicked1
-        this.isclicked2 = !this.isclicked2
-        this.isclicked7 = !this.isclicked7
-    },
   }
 }
 </script>
@@ -252,7 +175,7 @@ export default {
           <div class="btn-group" style="width:100%">  
             <span v-if="isclicked1"><button @click="showOptions1" class="btnbinary" id="btn1">Wybierz zakres</button></span>
             <span v-if="isclicked2"><button @click="showOptions2" class="btnbinary" id="btn2">Auto-wyświetlanie</button></span>
-            <span v-if="isclicked4"><button @click="showOptions4" class="btnbinary" id="btn4">Wygląd</button></span>
+            <span v-if="isclicked4"><button @click="showOptions4b" class="btnbinary" id="btn4">Wygląd</button></span>
             <span v-if="isclicked3"><button class="btnbinary" type="submit" id="submitButton2"></button></span>
             <span v-if="isclicked5"><input type="text" id="lrange" class="btnbinary2" name="zakresl" placeholder="Liczba kolumn (np: 8)"></span>
             <span v-if="isclicked5"><input type="text" id="rrange" class="btnbinary2" name="zakresr" placeholder="Liczba wierszy (np: 2)"></span>
@@ -262,86 +185,14 @@ export default {
             <span v-if="isclicked7"><button @click="showOptions7(); odstepKreska();" class="btnbinary" type="submit" id="submitButton2">Przerwa</button></span>
             
           </div>
-          <button max-height="50" max-width="50" class="button-hide" @click="closeNav"><i class="arrow-left"></i></button>
-          <button max-height="50" max-width="50" class="button-open" @click="openNav"><i class="arrow-right"></i></button>
+            <button max-height="50" max-width="50" class="button-hide" @click="closeNav"><i class="arrow-left"></i></button>
+            <button max-height="50" max-width="50" class="button-open" @click="openNav"><i class="arrow-right"></i></button>
         </v-col>
       </div>
     </div>
 </template>
 
 <style>
-.sidebar-binary{
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  height: 535px;
-  max-width: 300px;
-  width: 300px;
-  background-color: #ff8400;
-  justify-content: center;
-  text-align: center;
-  position: fixed;
-  transition-duration: 0.8s;
-  border-radius: 10px;
-}
-.sidebar-binary-nav{
-  margin-top: 5px;  
-  height: 100px;
-  max-width: 280px;
-  color: white;
-  line-height: 100px;
-  display: block;
-}
-#btn1, #btn2, #btn3, #btn4{
-    display: block;
-}
-.button-open{
-  max-width: 280px;
-  color: white;
-  line-height: 20px;
-  display: none;
-}
-.button-hide{
-  max-width: 280px;
-  color: white;
-  line-height: 20px;
-  display: block;
-}
-.sidebar-nav:hover{
-  background-color: rgb(58, 58, 58);
-}
-.arrow-left, .arrow-right {
-  position: absolute;
-  margin: 0 auto;
-  width: 0; 
-  height: 0; 
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent; 
-  margin-left: auto;
-  left: 92%;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  transition-duration: 0.6s;
-}
-.arrow-right {
-  border-left: 25px solid white;
-}
-.arrow-left {
-  border-right: 25px solid white;
-}
-.btnbinary, .btnbinary2{
-  width: 100%;
-  border-radius: 10px;
-  height: 90px;
-  margin-top: 30px;
-  background-color: #c2c2c2;
-  text-align: center;
-  display: block;
-}
-
-.btnbinary:hover{
-  background-color: #ff6600;
-}
-
+@import '../css/binarynav.css';
+@import '../css/nav.css';
 </style>

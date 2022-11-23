@@ -1,26 +1,14 @@
 <script>
-
 export default {
   el: '#vuebuttons',
   data() {
     return {
-      isLoading : true,
-      isclicked1 : true,
-      isclicked2 : true,
-      isclicked3 : true,
-      isclicked4 : true,
-      isclicked5 : false, 
-      myInterval : null,
-      rangeArray : [0, 0],
-      lettersArray : ["AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AT", "AU", "AW", "BA", "BC", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BT", "BU", "BW", "CA", "CB", "CD", "CE", "CF", "CG", "CH", "CI", "CJ", "CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CT", "CU", "CW", "DA", "DB", "DC", "DE", "DF", "DG", "DH", "DI", "DJ", "DK", "DL", "DM", "DN", "DO", "DP", "DQ", "DR", "DS", "DT", "DU", "DW", "EA", "EB", "ED", "EC", "EF", "EG", "EH", "EI", "EJ", "EK", "EL", "EM", "EN", "EO", "EP", "EQ", "ER", "ES", "ET", "EU", "EW", "FA", "FB", "FC", "FD", "FE", "FG", "FH", "FI", "FJ", "FK", "FL", "FM", "FN", "FO", "FP", "FQ", "FR", "FS", "FT", "FU", "FW", "GA", "GB", "GC", "GD", "GE", "GF", "GH", "GI", "GJ", "GK", "GL", "GM", "GN", "GO", "GP", "GQ", "GP", "GR", "GA", "GT", "GU", "GW", "HA", "HB", "HC", "HD", "HE", "HF", "HG", "HI", "HJ", "HK", "HL", "HM", "HN", "HO", "HP", "HQ", "HR", "HS", "HT", "HU", "HW", "IA", "IB", "IC", "ID", "IE", "IF", "IG", "IH", "IJ", "IK", "IL", "IM", "IN", "IO", "IP", "IQ", "IR", "IS", "IT", "IU", "IW", "JA", "JB", "JC", "JD", "JE", "JF", "JG", "JH", "JI", "JK", "JL", "JM", "JM", "JO", "JP", "JQ", "JR", "JS", "JT", "JU", "JW", "KA", "KB", "KC", "KD", "KE", "KF", "KG", "KH", "KI", "KJ", "KL", "KM", "KN", "KO", "KP", "KQ", "KR", "KS", "KT", "KU", "KW", "LA", "LB", "LC", "LD", "LE", "LF", "LG", "LH", "LI", "LI", "LK", "LM", "LN", "LO", "LP", "LQ", "LR", "LS", "LT", "LU", "LW", "MA", "MB", "MC", "MD", "ME", "MF", "MG", "MH", "MI", "MJ", "MK", "ML", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MW", "NA", "NB", "NC", "ND", "NE", "NF", "NG", "NH", "NI", "NJ", "NK", "NL", "NM", "NO", "NP", "NQ", "NR", "NS", "NT", "NU", "NW", "OA", "OB", "OC", "OD", "OE", "OF", "OG", "OH", "OI", "OJ", "OK", "OL", "OM", "ON", "OP", "OQ", "OR", "OS", "OT", "OU", "OW", "PA", "PB", "PC", "PD", "PE", "PF", "PG", "PH", "PI", "PJ", "PK", "PL", "PM", "PN", "PO", "PQ", "PR", "PS", "PT", "PU", "PW", "QA", "QB", "QC", "QD", "QE", "QF", "QG", "QH", "QI", "QJ", "QK", "QL", "QM", "QN", "QO", "QP", "QR", "QS", "QT", "QU", "QW", "RA", "RB", "RC", "RD", "RE", "RF", "RG", "RH", "RI", "RJ", "RK", "RL", "RM", "RN", "RO", "RP", "RS", "RT", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SF", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SP", "SQ", "SR", "ST", "SU", "SW", "TA", "TB", "TC", "TD", "TE", "TF", "TG", "TH", "TI", "TJ", "TK", "TL", "TM", "TN", "TO", "TP", "TQ", "TR", "TS", "TU", "TW", "UA", "UB", "UC", "UD", "UE", "UF", "UG", "UH", "UI", "UJ", "UK", "UL", "UM", "UN", "UO", "UP", "UQ", "UR", "US", "UT", "UW", "WA", "WB", "WC", "WD", "WE", "WF", "WG", "WH", "WI", "WJ", "WK", "WL", "WM", "WN", "WO", "WP", "WQ", "WR", "WS", "WT", "WU"],
-
-      num : 0,
-      x : 0,
-      numbers : new Set(),
-      a : 0,
-      b : 0,
+      a : 0, b : 0,
     }
   },
+  mixins: [
+    require('../MyMixins/palowanieMixin.vue')
+  ],
   created() {
     window.addEventListener('keydown', (e) => {
       if (e.key == 'ArrowRight') {
@@ -34,22 +22,8 @@ export default {
     });
   },
   methods: {
-    getRandomInt: function(min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-    },
-
-    setRangeFunction: function(){
-        this.a = document.getElementById("lrange").value;
-        console.log(this.a);
-        this.b = document.getElementById("rrange").value;
-        console.log(this.b);
-    },
-
     rangeFunction: function(){
         var c = this.getRandomInt(this.a, this.b);
-        //this.x = document.getElementById("displayNumber");
         this.x = c;
 
         window.addEventListener('keydown', (e) => {
@@ -90,12 +64,6 @@ export default {
           }
         }
     },
-
-    getRandomItem: function(set) {
-      let items = Array.from(set);
-      return items[Math.floor(Math.random() * items.length)];
-    },
-
     rangeFunction2: function() {	
       if(this.numbers.size != 0){
         var r = this.getRandomItem(this.numbers);
@@ -112,21 +80,6 @@ export default {
         }
       }
     },
-
-    autoPlay: function() {
-      var v = document.getElementById("interwał").value;
-      console.log(v);	
-      this.myInterval = setInterval(this.rangeFunction, v);
-    },
-
-    buttons(){
-      const buttonopen = document.querySelector(".button-open")
-      buttonopen.style.display = "block"
-      
-      const buttonhide = document.querySelector(".button-hide")
-      buttonhide.style.display = "none"
-    },
-
     closeNav: function(){
       const sidebar =  document.querySelector(".sidebar-numbers")
       sidebar.style.width = "0px"
@@ -168,36 +121,6 @@ export default {
         sidebarnav[i].style.display = "block";
       }
     },
-
-    showOptions1: function(){
-        this.isclicked2 = !this.isclicked2
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked5 = !this.isclicked5
-    },
-    showOptions2: function(){
-        this.isclicked1 = !this.isclicked1
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked6 = !this.isclicked6
-    },
-    showOptions4: function(){
-        this.isclicked1 = !this.isclicked1
-        this.isclicked2 = !this.isclicked2
-        this.isclicked3 = !this.isclicked3
-    },
-    showOptions5: function(){
-        this.isclicked2 = !this.isclicked2
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked5 = !this.isclicked5
-    },
-    showOptions6: function(){
-        this.isclicked1 = !this.isclicked1
-        this.isclicked3 = !this.isclicked3
-        this.isclicked4 = !this.isclicked4
-        this.isclicked6 = !this.isclicked6
-    },
   }
 }
 </script>
@@ -225,76 +148,6 @@ export default {
 </template>
 
 <style>
-.sidebar-numbers{
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  height: 535px;
-  max-width: 300px;
-  width: 300px;
-  background-color: #366799;
-  justify-content: center;
-  text-align: center;
-  position: fixed;
-  transition-duration: 0.8s;
-  border-radius: 10px;
-}
-.sidebar-number-nav{
-  margin-top: 5px;  
-  height: 100px;
-  max-width: 280px;
-  color: white;
-  line-height: 100px;
-  display: block;
-}
-#btn1, #btn2, #btn3, #btn4{
-    display: block;
-}
-.button-open{
-  max-width: 280px;
-  color: white;
-  line-height: 20px;
-  display: none;
-}
-.button-hide{
-  max-width: 280px;
-  color: white;
-  line-height: 20px;
-  display: block;
-}
-.sidebar-number-nav:hover{
-  background-color: rgb(58, 58, 58);
-}
-.arrow-left, .arrow-right {
-  position: absolute;
-  margin: 0 auto;
-  width: 0; 
-  height: 0; 
-  border-top: 25px solid transparent;
-  border-bottom: 25px solid transparent; 
-  margin-left: auto;
-  left: 92%;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  transition-duration: 0.6s;
-}
-.arrow-right {
-  border-left: 25px solid white;
-}
-.arrow-left {
-  border-right: 25px solid white;
-}
-.btnnumber, .btnnumber2{
-  width: 100%;
-  border-radius: 10px;
-  height: 90px;
-  margin-top: 30px;
-  background-color: #c2c2c2;
-  text-align: center;
-  display: block;
-}
-.btnnumber:hover{
-  background-color: #1d4c7a;
-}
+@import '../css/numbersnav.css';
+@import '../css/nav.css';
 </style>
