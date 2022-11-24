@@ -5,27 +5,32 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    component: Home,
+    meta: { transition: 'slide', mode: 'default'},
   },
   {
     path: '/liczby',
     name: 'liczby',
-    component: () => import('../views/NumbersVue.vue')
+    component: () => import('../views/NumbersVue.vue'),
+    meta: { transition: 'grow-in', mode: 'out-in'},
   },
   {
     path: '/binarne',
     name: 'binarne',
-    component: () => import('../views/BinaryVue.vue')
+    component: () => import('../views/BinaryVue.vue'),
+    meta: { transition: 'grow-in', mode: 'out-in'},
   },
   {
     path: '/karty',
     name: 'karty',
-    component: () => import('../views/CardsVue.vue')
+    component: () => import('../views/CardsVue.vue'),
+    meta: { transition: 'grow-in', mode: 'out-in'},
   },
   {
     path: '/litery',
     name: 'litery',
-    component: () => import('../views/LettersVue.vue')
+    component: () => import('../views/LettersVue.vue'),
+    meta: { transition: 'grow-in', mode: 'out-in'},
   }
 ]
 
