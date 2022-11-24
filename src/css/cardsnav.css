@@ -1,8 +1,10 @@
 #displaycard {
-  height: 205px;
   border-radius: 10px;
-  line-height: 100px;
-  display: flex;
+  margin: 0;
+  position: absolute;
+  top: 35%;
+  left: 41%;
+  transform: translate(-50%, -50%);
 }
 @media screen and (max-width: 1300px){
     #displaycard{   padding-left: 430px; }
