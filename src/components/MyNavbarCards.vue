@@ -247,28 +247,24 @@ export default {
                     aspect-ratio="1"
                     class="card1"
                     id="obrazek1"
-                    rel="preload"
                   /></div>
                   <div id="displayCardd2"><v-img
                       :src='imagesArray[currentSrc2]'
                       aspect-ratio="1"
                       class="card2"
                       id="obrazek2"
-                      rel="preload"
                     /></div>
                     <div id="displayCardd3"><v-img
                       :src='imagesArray[currentSrc3]'
                       aspect-ratio="1"
                       class="card3"
                       id="obrazek3"
-                      rel="preload"
                     /></div>
                     <div id="displayCardd4"><v-img
                         :src='imagesArray[currentSrc4]'
                         aspect-ratio="1"
                         class="card4"
                         id="obrazek4"
-                        rel="preload"
                       /></div>
               </div>
             </div>
