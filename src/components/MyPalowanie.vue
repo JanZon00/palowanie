@@ -2,38 +2,38 @@
   <v-container fluid class="padcon">
         <v-row class="pa-0 ma-0">
           <v-col lg="6" md="6" sm="6" cols="12" class="pa-0 ma-0">
-            <router-link to="trening" class="pa-0 ma-0">
+            <router-link to="palowanie/karty" class="pa-0 ma-0">
               <div @mouseover="hovertrening = true"  @mouseleave="hovertrening = false">
-              <span><div class="field1h"><span class="dot1">
-                <span class="indot1h"></span></span>
+              <span><div class="field1"><span class="dot1">
+                <span class="indot1"></span></span>
               </div></span></div>
             </router-link>
           </v-col>
           <v-col lg="6" md="6" sm="6" cols="12" class="pa-0 ma-0">
-            <router-link to="palowanie" class="pa-0 ma-0">
+            <router-link to="palowanie/binarne" class="pa-0 ma-0">
               <div @mouseover="hoverpaluj = true"  @mouseleave="hoverpaluj = false">
-              <span><div class="field2h"><span class="dot2">
-              <span class="indot2h"></span></span></div></span></div>
+              <span><div class="field2"><span class="dot2">
+              <span class="indot2"></span></span></div></span></div>
             </router-link>
           </v-col>
           <div class="mozg"><span class="dotcenter"><span class="dotinnercenter"></span>
-            <span v-if="hovertrening"><span class="dotinnercenter" style="background-color:#f0d53d"><p class="title">TRENING</p></span></span>
-            <span v-if="hoverpaluj"><span class="dotinnercenter" style="background-color:#e04d26"><p class="title">PAŁOWANIE</p></span></span>
-            <span v-if="hoverwyniki"><span class="dotinnercenter" style="background-color:#3e9231"><p class="title">WYNIKI</p></span></span>
-            <span v-if="hoverustawienia"><span class="dotinnercenter" style="background-color:#5ed4f3"><p class="title">USTAWIENIA</p></span></span>
+            <span v-if="hovertrening"><span class="dotinnercenter" style="background-color:#e04d26"><p class="title">KARTY</p></span></span>
+            <span v-if="hoverpaluj"><span class="dotinnercenter" style="background-color:#f0d53d"><p class="title">BINARNE</p></span></span>
+            <span v-if="hoverwyniki"><span class="dotinnercenter" style="background-color:#5ed4f3"><p class="title">LICZBY</p></span></span>
+            <span v-if="hoverustawienia"><span class="dotinnercenter" style="background-color:#3e9231"><p class="title">LITERY</p></span></span>
           </span></div>
           <v-col lg="6" md="6" sm="6" cols="12" class="pa-0 ma-0">
-            <router-link to="wyniki" class="pa-0 ma-0">
+            <router-link to="palowanie/liczby" class="pa-0 ma-0">
               <div @mouseover="hoverwyniki = true"  @mouseleave="hoverwyniki = false">
-              <span><div class="field3h"><span class="dot3">
-              <span class="indot3h"></span></span></div></span></div>
+              <span><div class="field3"><span class="dot3">
+              <span class="indot3"></span></span></div></span></div>
             </router-link>
           </v-col>
           <v-col lg="6" md="6" sm="6" cols="12"  class="pa-0 ma-0">
-            <router-link to="ustawienia" class="pa-0 ma-0">
+            <router-link to="palowanie/litery" class="pa-0 ma-0">
               <div @mouseover="hoverustawienia = true"  @mouseleave="hoverustawienia = false">
-              <span><div class="field4h"><span class="dot4">
-              <span class="indot4h"></span></span></div></span></div>
+              <span><div class="field4"><span class="dot4">
+              <span class="indot4"></span></span></div></span></div>
             </router-link>
           </v-col>
         </v-row>
@@ -80,7 +80,7 @@ export default({
     padding-top: 0px;
   }
 }
-.field1h, .field2h, .field3h, .field4h{
+.field1, .field2, .field3, .field4{
   transition-duration: 0.4s;
   color: white;
   border-radius: 20px;
@@ -91,19 +91,19 @@ export default({
   max-height: 50%;
   position: relative;
 }
-.field1h{
-  background-image: url("../views/assets/home2.png");
+.field1{
+  background-image: url("../views/assets/tlo1.png");
 }
-.field2h{
-  background-image: url("../views/assets/home1.png");
+.field2{
+  background-image: url("../views/assets/tlo2.png");
 }
-.field3h{
-  background-image: url("../views/assets/home4.png");
+.field3{
+  background-image: url("../views/assets/tlo3.png");
 }
-.field4h{
-  background-image: url("../views/assets/home3.png");
+.field4{
+  background-image: url("../views/assets/tlo4.png");
 }
-.field1h:hover, .field2h:hover, .field3h:hover, .field4h:hover {
+.field1:hover, .field2:hover, .field3:hover, .field4:hover {
   transform: scale(1.02);
 }
 a:link, a:visited, a:hover, a:active {
@@ -116,12 +116,12 @@ a:link, a:visited, a:hover, a:active {
   font-weight: 600;
 }
 @media screen and (max-width: 600px) {
-  .field1h, .field3h{
+  .field1, .field3{
     margin-left: 0px;
   }
 }
 @media screen and (max-width: 600px) {
-  .field2h, .field4h{
+  .field2, .field4{
     margin-right: 0px;
   }
 }
@@ -187,7 +187,7 @@ a:link, a:visited, a:hover, a:active {
   background-color: white;
 }
 
-.indot1h, .indot2h, .indot3h, .indot4h{
+.indot1, .indot2, .indot3, .indot4{
   margin-left: auto;
   margin-right: auto;
   left: 0;
@@ -201,23 +201,23 @@ a:link, a:visited, a:hover, a:active {
   position: relative;
   top: 27px;
 }
-.indot1h{
-  background-image: url("../views/assets/brain.png");
+.indot1{
+  background-image: url("../views/assets/cards.png");
   background-size: 100px 100px;
   background-position: 50% 50%;
 }
-.indot2h{
-  background-image: url("../views/assets/stopwatch.png");
+.indot2{
+  background-image: url("../views/assets/binary-code.png");
   background-size: 100px 100px;
   background-position: 50% 50%;
 }
-.indot3h{
-  background-image: url("../views/assets/ranking.png");
+.indot3{
+  background-image: url("../views/assets/maths.png");
   background-size: 100px 100px;
   background-position: 50% 50%;
 }
-.indot4h{
-  background-image: url("../views/assets/settings.png");
+.indot4{
+  background-image: url("../views/assets/cubes.png");
   background-size: 100px 100px;
   background-position: 50% 50%;
 }

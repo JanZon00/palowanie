@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="pa-0 ma-0" style="background-color:#c2c2c2;height:100%">
       <v-row class="text-center pa-0 ma-0">
-        <router-link to="/" class="pa-0 ma-0"><div class="arrowback"></div></router-link>
+        <router-link to="/palowanie" class="pa-0 ma-0"><div class="arrowback"></div></router-link>
         <v-col cols="12" class="pa-0 ma-0">
          <span v-if="mobileView"><MyNavbarLettersMobile></MyNavbarLettersMobile></span> 
          <span v-else><MyNavbarLetters></MyNavbarLetters></span>
@@ -35,6 +35,10 @@ export default defineComponent({
   created() {
     this.handleView();
     window.addEventListener('resize', this.handleView);
+    //user is not authorized
+    if (localStorage.getItem('token') === null) {
+      this.$router.push('/login');
+    }
   },
   components: {
     MyNavbarLetters,

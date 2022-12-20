@@ -1,9 +1,7 @@
 <template>
   <v-container fluid class="pa-0 ma-0" style="background-color:#c2c2c2;height:100%">
       <v-row class="text-center pa-0 ma-0">
-        <router-link to="/palowanie" class="pa-0 ma-0"><div class="arrowback"></div></router-link>
-          <span v-if="mobileView"><MyNavbarCardsMobile></MyNavbarCardsMobile></span>
-          <span v-else><MyNavbarCards></MyNavbarCards></span>
+        <router-link to="/" class="pa-0 ma-0"><div class="arrowback"></div></router-link>
       </v-row>
   </v-container>
 </template>
@@ -12,17 +10,19 @@
 import { defineComponent } from 'vue';
 
 // Components
-import MyNavbarCards from '../components/MyNavbarCards.vue';
-import MyNavbarCardsMobile from '../components/MyNavbarCardsMobile.vue';
+//import MyNavbarBinary from '../components/MyNavbarBinary.vue';
 
 export default defineComponent({
-  name: 'NumbersVue',
+  //name: 'BinaryVue',
 
   data() {
   },
+  components: {
+    //MyNavbarBinary,
+  },
   methods: {
     handleView() {
-        this.mobileView = window.innerWidth <= 900;
+        this.mobileView = window.innerWidth <= 800;
     }
   },
   created() {
@@ -32,10 +32,6 @@ export default defineComponent({
     if (localStorage.getItem('token') === null) {
       this.$router.push('/login');
     }
-  },
-  components: {
-    MyNavbarCards,
-    MyNavbarCardsMobile,
   },
 });
 
@@ -54,8 +50,5 @@ export default defineComponent({
 .arrowback:hover{
   transform: scale(1.12);
   transition: 0.4s;
-}
-@media screen and (max-width: 900px){
-    .arrowback{ top:550px; }
 }
 </style>

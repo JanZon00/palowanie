@@ -14,5 +14,11 @@ export default defineComponent({
   components: {
     Home,
   },
+  created() {
+    //user is not authorized
+    if (localStorage.getItem('token') === null) {
+      this.$router.push('/login');
+    }
+  },
 });
 </script>
