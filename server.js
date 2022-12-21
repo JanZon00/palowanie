@@ -5,15 +5,20 @@ const bcrypt = require('bcrypt');
 const cors = require('cors');
 const User = require('./models/User');
 const jwt = require('jsonwebtoken');
+const serverless = require('serverless-http');
 
 mongoose.set('strictQuery', false);
 mongoose.connect('mongodb+srv://admin_user:qwerty123@cluster0.t9k7inn.mongodb.net/test')
 
 const app = express();
+const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/.netlify/functions/api', router)
 
+module.exports = app;
+module.exports.handler = serverless(app)
 //routes
 app.post('/register', (req, res, next) => {
     //console.log(req.body)
