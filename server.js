@@ -7,7 +7,8 @@ const User = require('./models/User');
 const jwt = require('jsonwebtoken');
 
 mongoose.set('strictQuery', false);
-mongoose.connect('mongodb+srv://admin_user:qwerty123@cluster0.t9k7inn.mongodb.net/test')
+//mongoose.connect('mongodb+srv://admin_user:qwerty123@cluster0.t9k7inn.mongodb.net/test')
+mongoose.connect('mongodb+srv://admin_user:qwerty123@cluster0.t9k7inn.mongodb.net/?retryWrites=true&w=majority')
 
 const app = express();
 app.use(cors());
