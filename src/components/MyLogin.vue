@@ -35,8 +35,10 @@ export default({
         },
         async handleLogin(){
             const user = {
-                nickname : this.nickname,
-                password : this.password 
+                //nickname : this.nickname,
+                //password : this.password 
+                nickname : "Jazon",
+                password : "1234567890" 
             };
             axios.post(url, user)
                 .then(res => {
